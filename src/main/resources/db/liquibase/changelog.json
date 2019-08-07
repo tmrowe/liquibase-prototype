@@ -1,0 +1,214 @@
+{
+  "databaseChangeLog": [
+    {
+      "preConditions": [
+        {
+          "runningAs": {
+            "username": "liquibase_migration"
+          }
+        }
+      ]
+    },
+
+    {
+      "changeSet": {
+        "id": "1",
+        "author": "Thomas Rowe",
+        "context": "create user table",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "user",
+              "columns": [
+                {
+                  "column": {
+                    "name": "uuid",
+                    "type": "uuid",
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "changeSet": {
+        "id": "2",
+        "author": "Thomas Rowe",
+        "context": "create user table",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "list",
+              "columns": [
+                {
+                  "column": {
+                    "name": "uuid",
+                    "type": "uuid",
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_by",
+                    "type": "uuid",
+                    "constraints": {
+                      "foreignKeyName": "fk_list_user",
+                      "referencedTableName": "user",
+                      "referencedColumnNames": "uuid",
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "varchar(256)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "description",
+                    "type": "varchar(256)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "changeSet": {
+        "id": "3",
+        "author": "Thomas Rowe",
+        "context": "create user_list_permission table",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "user_list_permission",
+              "columns": [
+                {
+                  "column": {
+                    "name": "user_uuid",
+                    "type": "uuid",
+                    "constraints": {
+                      "foreignKeyName": "fk_user_list_permission",
+                      "referencedTableName": "user",
+                      "referencedColumnNames": "uuid",
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "list_uuid",
+                    "type": "uuid",
+                    "constraints": {
+                      "foreignKeyName": "fk_list_user_permission",
+                      "referencedTableName": "list",
+                      "referencedColumnNames": "uuid",
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "can_view",
+                    "type": "boolean",
+                    "defaultValue": "false"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "can_edit",
+                    "type": "boolean",
+                    "defaultValue": "false"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "can_delete",
+                    "type": "boolean",
+                    "defaultValue": "false"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "defaultValue": "now()",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+
+  ]
+}

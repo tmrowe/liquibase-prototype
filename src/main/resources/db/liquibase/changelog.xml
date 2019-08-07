@@ -51,7 +51,7 @@
 
     <changeSet author="thomas rowe" id="3" context="create user_list_permission table">
         <createTable tableName="user_list_permission">
-            <column name="user_uuid" type="uuid" defaultValue="gen_random_uuid()">
+            <column name="user_uuid" type="uuid">
                 <constraints foreignKeyName="fk_user_list_permission"
                              referencedTableName="user"
                              referencedColumnNames="uuid"

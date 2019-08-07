@@ -13,7 +13,7 @@
 
     <changeSet author="thomas rowe" id="1" context="create user table">
         <createTable tableName="user">
-            <column name="uuid" type="uuid">
+            <column name="uuid" type="uuid" defaultValue="gen_random_uuid()">
                 <constraints primaryKey="true"
                              nullable="false"/>
             </column>
@@ -28,7 +28,7 @@
 
     <changeSet author="thomas rowe" id="2" context="create list table">
         <createTable tableName="list">
-            <column name="uuid" type="uuid">
+            <column name="uuid" type="uuid" defaultValue="gen_random_uuid()">
                 <constraints primaryKey="true"
                              nullable="false"/>
             </column>
@@ -51,7 +51,7 @@
 
     <changeSet author="thomas rowe" id="3" context="create user_list_permission table">
         <createTable tableName="user_list_permission">
-            <column name="user_uuid" type="uuid">
+            <column name="user_uuid" type="uuid" defaultValue="gen_random_uuid()">
                 <constraints foreignKeyName="fk_user_list_permission"
                              referencedTableName="user"
                              referencedColumnNames="uuid"

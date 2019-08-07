@@ -25,6 +25,8 @@ Example YAML Change Log: `src/main/resources/liquibase/db.changelog.yaml`
 * Localhost instance of Postgres running on port 5432. 
 * Create a database named `liquibase`.
 * Create a user with username `liquibase_migration` and password `123456` with super user privileges. 
+* The `pgcrypto` extension has been installed using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This allows
+us to use the `gen_random_uuid()` function to generate UUIDs.
 
 ### Command Line
 Can run migrations using the liquibase commandline tool or by running a JAR.

@@ -14,6 +14,7 @@ databaseChangeLog:
               - column:
                   name: uuid
                   type: uuid
+                  defaultValue: gen_random_uuid()
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -41,6 +42,7 @@ databaseChangeLog:
               - column:
                   name: uuid
                   type: uuid
+                  defaultValue: gen_random_uuid()
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -82,6 +84,7 @@ databaseChangeLog:
               - column:
                   name: user_uuid
                   type: uuid
+                  defaultValue: gen_random_uuid()
                   constraints:
                     foreignKeyName: fk_user_list_permission
                     referencedTableName: user

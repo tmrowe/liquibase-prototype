@@ -23,7 +23,7 @@ Show logs:
 `docker logs -f postgres`
 
 Run PSQL:
-`docker exec -it postgres psql --username flyway_migration --dbname flyway`
+`docker exec -it postgres psql --username liquibase_migration --dbname liquibase`
 
 CTRL+D to exit.
 
@@ -39,9 +39,40 @@ Setup instructions for a standalone postgres instance without using Docker.
 * Install the `pgcrypto` extension in the `liquibase` database using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This 
 allows us to use the `gen_random_uuid()` function to generate UUIDs.
 
-## PG Admin
+## Database
+Tools for working with the database. The tools in this section allow you to connect to the database, 
+view it's roles and tables, and write SQL queries. This is a short list of tools there are many others 
+available.
+
+### PSQL
+The [Postgres Command Line Tools](https://www.postgresql.org/docs/9.3/app-psql.html) can be used by 
+connecting to the container with `docker exec -it postgres psql --username liquibase_migration --dbname liquibase`
+
+### IntelliJ Database Window
+The [IntelliJ Database Window](https://www.jetbrains.com/help/idea/database-tool-window.html) can be 
+configured to connect to and view the database.
+
+Open the database window.
+
+General Tab
+```
+Host: localhost
+Port: 5432
+User: liquibase_migration
+Password: 123456
+Database: liquibase
+```
+
+Schemas Tab
+```
+Tick the checkbox next to liquibase.
+Expand the liquibase accordion.
+Tick the checkbox next to the public.
+```
+
+### PG Admin
 You can use [PG Admin](https://www.pgadmin.org/download/) by connecting to the database running in the container
-with no additional configuration. 
+with no additional configuration. This is a desktop application for interacting with Postgres databases.
 
 ## Change Sets
 Changes sets are a set of files that will be executed in a sequence to build the database. With 

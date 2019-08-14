@@ -14,9 +14,9 @@
       "changeSet": {
         "id": "1",
         "author": "Thomas Rowe",
-        "context": "create user table",
         "changes": [
           {
+            "comment": "create user table",
             "createTable": {
               "tableName": "user",
               "columns": [
@@ -62,9 +62,9 @@
       "changeSet": {
         "id": "2",
         "author": "Thomas Rowe",
-        "context": "create user table",
         "changes": [
           {
+            "comment": "create user table",
             "createTable": {
               "tableName": "list",
               "columns": [
@@ -134,9 +134,9 @@
       "changeSet": {
         "id": "3",
         "author": "Thomas Rowe",
-        "context": "create user_list_permission table",
         "changes": [
           {
+            "comment": "create user_list_permission table",
             "createTable": {
               "tableName": "user_list_permission",
               "columns": [

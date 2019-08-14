@@ -6,8 +6,8 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: Thomas Rowe
-      context: Create user table
       changes:
+        - comment: Create user table
         - createTable:
             tableName: user
             columns:
@@ -34,8 +34,8 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: Thomas Rowe
-      context: Create list table
       changes:
+        - comment: Create list table
         - createTable:
             tableName: list
             columns:
@@ -76,8 +76,8 @@ databaseChangeLog:
   - changeSet:
       id: 3
       author: Thomas Rowe
-      context: Create user_list_permission table
       changes:
+        - comment: Create user_list_permission table
         - createTable:
             tableName: user_list_permission
             columns:

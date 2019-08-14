@@ -11,7 +11,8 @@
         <runningAs username="liquibase_migration"/>
     </preConditions>
 
-    <changeSet author="thomas rowe" id="1" context="create user table">
+    <changeSet author="thomas rowe" id="1">
+        <comment>create user table</comment>
         <createTable tableName="user">
             <column name="uuid" type="uuid" defaultValue="gen_random_uuid()">
                 <constraints primaryKey="true"
@@ -26,7 +27,8 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="thomas rowe" id="2" context="create list table">
+    <changeSet author="thomas rowe" id="2">
+        <comment>create list table</comment>
         <createTable tableName="list">
             <column name="uuid" type="uuid" defaultValue="gen_random_uuid()">
                 <constraints primaryKey="true"
@@ -49,7 +51,8 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="thomas rowe" id="3" context="create user_list_permission table">
+    <changeSet author="thomas rowe" id="3">
+        <comment>create user_list_permission table</comment>
         <createTable tableName="user_list_permission">
             <column name="user_uuid" type="uuid">
                 <constraints foreignKeyName="fk_user_list_permission"

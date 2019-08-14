@@ -29,14 +29,15 @@ CTRL+D to exit.
 
 Further commands can be found on the [Docker Cheat Sheet](https://www.saltycrane.com/blog/2017/08/docker-cheat-sheet/).
 
-### Manual
+### Manual Setup
 Setup instructions for a standalone postgres instance without using Docker.
 
 * Localhost instance of Postgres running on port 5432. 
-* Create a database named `flyway`.
-* Create a user with username `flyway_migration` and password `123456` with super user privileges. 
-* The `pgcrypto` extension has been installed using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This allows
-us to use the `gen_random_uuid()` function to generate UUIDs.
+* Create a database named `liquibase`.
+* Create a user with username `liquibase_migration` and password `123456`.
+* Make the `liquibase_migration` user the owner of the `liquibase` database.
+* Install the `pgcrypto` extension in the `liquibase` database using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This 
+allows us to use the `gen_random_uuid()` function to generate UUIDs.
 
 ## PG Admin
 You can use [PG Admin](https://www.pgadmin.org/download/) by connecting to the database running in the container
@@ -66,10 +67,15 @@ Example YAML Change Log: `src/main/resources/db/migration/changelog.yaml`
 Can run migrations using the liquibase commandline tool or by running a JAR.
 
 #### Command Line Tool
-__TODO__
+The Liquibase command line tool can be used to run migrations in environments where Maven is not present.
+[Documentation](http://www.liquibase.org/documentation/command_line.html) for Liquibase command line tool can be found 
+on their website.
+
+Download the tool from the [Liquibase website](https://download.liquibase.org/).
 
 #### JAR
-__TODO__
+__TODO__ 
+Do we need this?
 
 ### Maven
 Running via Maven will use the Maven plugin configured in the projects `pom.xml` file. Which uses the configuration

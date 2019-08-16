@@ -104,7 +104,7 @@ languages.
 It should be noted that Liquibase warns against using incrementing values in filenames to version files as detailed on
 their [website](http://www.liquibase.org/2007/06/the-problem-with-rails-active-migrations.html). Liquibase will not 
 prevent two change logs with the same version number specified from running. The uniqueness of a change set is defined 
-as a combination of it's id, author, and filename.
+by a combination of its `id` and `author` tags.
 
 Within Liquibase change logs we can specify SQL files to execute using 
 [sqlFile](https://www.liquibase.org/documentation/changes/sql_file.html). This allows us to specify complex
@@ -115,19 +115,19 @@ Each change set is committed to the database as a transaction and rolled back if
 ### JSON
 Example JSON change logs: `src/main/resources/db/changelog/json/`
 
-### SQL
-The SQL change logs are SQL with liquibase meta data supplied in formatted comments.
-
-With SQL change logs it is not possible to reference another file so all changes must be stored in the master file, or 
-one of the other intermediate languages must be used to reference the SQL files. 
-
-Example SQL change logs: `src/main/resources/db/changelog/sql/`
-
 ### XML
 Example XML change logs: `src/main/resources/db/changelog/xml/`
 
 ### YAML
 Example YAML change logs: `src/main/resources/db/changelog/yaml/`
+
+### SQL
+The SQL change logs are SQL with liquibase meta data supplied in formatted comments.
+
+The Liquibase authors have attempted to keep the SQL scripts as close to SQL as possible. Therefore several of the 
+features available through the other languages are not supporting with SQL change sets.
+
+Example SQL change logs: `src/main/resources/db/changelog/sql/`
 
 ## Data Inserts
 Liquibase is able to insert data into the the database via SQL scripts and CSV files.

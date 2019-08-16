@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <include file="src/main/resources/db/changelog/yaml/changelog-1.0_create_initial_tables.yaml"/>
+    <include file="src/main/resources/db/changelog/yaml/changelog-1.1_create_user_list_permission_table.yaml"/>
+
+    <!-- CSV Data Inserts -->
+    <changeSet author="Thomas Rowe" id="insert_users_with_csv" runOnChange="true">
+        <loadData file="src/main/resources/db/data/csv/insert_users.csv"
+                  schemaName="public"
+                  tableName="user">
+        </loadData>
+    </changeSet>
+
+    <!-- SQL Data Inserts -->
+    <changeSet author="liquibase-docs" id="insert_users_with_sql">
+        <sqlFile dbms="postgres"
+                 path="src/main/resources/db/data/sql/insert_users.sql"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>

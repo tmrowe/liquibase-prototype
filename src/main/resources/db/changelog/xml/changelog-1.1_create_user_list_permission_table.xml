@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <runningAs username="liquibase_migration"/>
+    </preConditions>
+
+    <changeSet author="thomas rowe" id="3">
+        <comment>create user_list_permission table</comment>
+        <createTable tableName="user_list_permission">
+            <column name="user_uuid" type="uuid">
+                <constraints foreignKeyName="fk_user_list_permission"
+                             referencedTableName="user"
+                             referencedColumnNames="uuid"
+                             nullable="false"/>
+            </column>
+            <column name="list_uuid" type="uuid">
+                <constraints foreignKeyName="fk_list_user_permission"
+                             referencedTableName="list"
+                             referencedColumnNames="uuid"
+                             nullable="false"/>
+            </column>
+            <column name="can_view" type="boolean" defaultValue="false"/>
+            <column name="can_edit" type="boolean" defaultValue="false"/>
+            <column name="can_delete" type="boolean" defaultValue="false"/>
+            <column name="created_at" type="timestamp" defaultValue="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValue="NOW()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

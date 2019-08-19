@@ -10,19 +10,18 @@
     <include file="src/main/resources/db/changelog/sql/changelog-1.0_create_initial_tables.sql"/>
     <include file="src/main/resources/db/changelog/sql/changelog-1.1_create_user_list_permission_table.sql"/>
 
+    <!-- SQL Data Inserts -->
+    <changeSet author="Thomas Rowe" id="insert_users_with_sql" runAlways="true">
+        <sqlFile dbms="postgresql"
+                 path="src/main/resources/db/data/sql/insert_users.sql"/>
+    </changeSet>
+
     <!-- CSV Data Inserts -->
-    <changeSet author="Thomas Rowe" id="insert_users_with_csv" runOnChange="true">
+    <changeSet author="Thomas Rowe" id="insert_users_with_csv">
         <loadData file="src/main/resources/db/data/csv/insert_users.csv"
                   schemaName="public"
                   tableName="user">
         </loadData>
-    </changeSet>
-
-    <!-- SQL Data Inserts -->
-    <changeSet author="liquibase-docs" id="insert_users_with_sql">
-        <sqlFile dbms="postgres"
-                 path="src/main/resources/db/data/sql/insert_users.sql"
-                 stripComments="true"/>
     </changeSet>
 
 </databaseChangeLog>
